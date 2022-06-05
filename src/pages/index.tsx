@@ -1,6 +1,5 @@
 import { Button } from '@components/atoms'
 import type { GetStaticProps, NextPage } from 'next'
-import { ParsedUrlQuery } from 'querystring'
 
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
