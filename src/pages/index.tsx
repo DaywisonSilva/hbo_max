@@ -1,9 +1,16 @@
 import { Button } from '@components/atoms'
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
+import { ParsedUrlQuery } from 'querystring'
+
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import api from '@services/api'
 
-const Home: NextPage = () => {
+type HomeProps = {
+  movies: Movie[]
+}
+
+const Home: NextPage<HomeProps> = ({ movies }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -12,12 +19,21 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className={styles.main}>
-        <h1>Olá</h1>
-        <Button />
-      </main>
+      <main className={styles.main}>{JSON.stringify(movies)}</main>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const {
+    data: { results: movies }
+  }: { data: { results: Movie } } = await api.get(`movie/popular`)
+
+  return {
+    props: {
+      movies
+    }
+  }
 }
 
 export default Home
