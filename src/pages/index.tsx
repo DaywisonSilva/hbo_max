@@ -1,4 +1,3 @@
-import { Button } from '@components/atoms'
 import type { GetStaticProps, NextPage } from 'next'
 
 import Head from 'next/head'
@@ -24,6 +23,8 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  console.log('\x1b[32m', '\n✅ Index Page created with success')
+
   const {
     data: { results: movies }
   }: { data: { results: Movie } } = await api.get(`movie/popular`)

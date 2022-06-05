@@ -17,8 +17,15 @@ interface MovieQuery extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params as MovieQuery
+  let movie: Movie | null = null
 
-  const { data: movie }: { data: Movie } = await api.get(`/movie/${id}`)
+  try {
+    const { data }: { data: Movie } = await api.get(`/movie/${id}`)
+    movie = data
+    console.log('\x1b[32m', `\n✅ Movie Page [${id}] created with success`)
+  } catch (e) {
+    console.log('\x1b[31m', `\n❌ Movie Page [${id}] wasn't created`)
+  }
 
   return {
     props: {
@@ -28,9 +35,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export async function getStaticPaths() {
-  const {
-    data: { results: movies }
-  }: { data: { results: Movie[] } } = await api.get('/movie/popular')
+  let movies: Movie[] = []
+
+  try {
+    const { data }: { data: { results: Movie[] } } = await api.get(
+      '/movie/popular'
+    )
+    movies = data.results
+  } catch (e) {
+    console.error(e)
+  }
 
   const paths = movies.map((movie) => ({
     params: { id: movie.id.toString() }
