@@ -17,7 +17,13 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className={styles.main}>{JSON.stringify(movies)}</main>
+      <main className={styles.main}>
+        <ul>
+          {movies.map((movie) => {
+            return <li key={movie.id}>{movie.title}</li>
+          })}
+        </ul>
+      </main>
     </div>
   )
 }

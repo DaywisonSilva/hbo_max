@@ -3,12 +3,8 @@ import React from 'react'
 import { GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
-function Movie({ title, id }: Movie) {
+function Movie({ title }: Movie) {
   return <div>{title}</div>
-}
-
-type Params = {
-  id: number
 }
 
 interface MovieQuery extends ParsedUrlQuery {
@@ -47,7 +43,7 @@ export async function getStaticPaths() {
   }
 
   const paths = movies.map((movie) => ({
-    params: { id: movie.id.toString() }
+    params: { id: movie.id.toString(), name: 'teste' }
   }))
 
   return {
