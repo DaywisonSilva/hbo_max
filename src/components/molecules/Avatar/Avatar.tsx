@@ -1,53 +1,23 @@
-/* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 
-import { avatarContainer, avatarIcon, avatarLegend } from "./Avatar.styles";
+import { avatarContainer, avatarIcon, avatarLabel } from "./Avatar.styles";
 
-type Data = {
-  data: any;
+type AvatarProps = {
+  src: string;
+  alt: string;
+  label: string;
 };
 
-type Items = {
-  adult: boolean;
-  gender: number;
-  id: number;
-  known_for_department: string;
-  name: string;
-  order: number;
-  original_name: string;
-  popularity: number;
-  profile_path: string;
-};
-
-export default function Avatar({ movieId }: { movieId: number }) {
-  const [castCreditsName, setCastCreditsName] = useState<string>();
-  const [castCreditsCastPic, setCastCreditsCastPic] = useState<string>();
-
-  useEffect(() => {
-    (async () => {
-      const response: Data = await axios.get(
-        `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
-      );
-
-      const profilePath: Items = response.data?.cast[0];
-      const profileName: Items = response.data?.cast[0];
-
-      setCastCreditsCastPic(profilePath.profile_path);
-      setCastCreditsName(profileName.name);
-    })();
-  }, []);
-
-  console.log(castCreditsName);
-
+export default function Avatar({ src, alt, label }: AvatarProps) {
   return (
     <div className={avatarContainer({})}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         className={avatarIcon({})}
-        alt="asdasd"
-        src={`https://images.tmdb.org/t/p/original${castCreditsCastPic}`}
+        alt={`Esta imagem é do filme: ${alt}`}
+        src={`${src}`}
       />
-      <p className={avatarLegend({})}> {`castCreditsName`}</p>
+      <p className={avatarLabel({})}>{label} </p>
     </div>
   );
 }

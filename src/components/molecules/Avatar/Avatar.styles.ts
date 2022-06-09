@@ -13,8 +13,10 @@ export const avatarIcon = css({
   width: "90%",
   height: "60%",
   borderRadius: "50%",
+  objectFit: "cover",
+  objectPosition: "top",
 });
-export const avatarLegend = css({
+export const avatarLabel = css({
   fontFamily: "sans-serif",
   fontWeight: 700,
 });
