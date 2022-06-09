@@ -10,7 +10,7 @@ type ImageProps = {
 function Card({ src, alt }: ImageProps) {
   function handleClick(e: any) {
     e.preventDefault();
-    return alert("oi");
+    return;
   }
 
   return (
