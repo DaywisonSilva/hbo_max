@@ -12,5 +12,8 @@ export const { getCssText } = createStitches({
     radii: {
       defaultBorderRadius: "10px",
     },
+    fonts: {
+      defaultFont: "Montserrat",
+    },
   },
 });
