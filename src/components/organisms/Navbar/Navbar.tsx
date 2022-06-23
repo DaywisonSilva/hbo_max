@@ -1,34 +1,38 @@
 /* eslint-disable @next/next/no-img-element */
+import React, { useState } from "react";
 import HboIcon from "@components/atoms/HboIcon";
 import Icon from "@components/atoms/Icon";
-import NavbarP from "@components/atoms/NavbarP";
-import React from "react";
+import Link from "@components/atoms/Link";
 
-import {
-  navDiv,
-  navMain,
-  subNavDiv,
-  subNavDivIcon,
-  subNavDivHboLogo,
-} from "./Navbar.styles";
+import { header, nav } from "./Navbar.styles";
 
 export default function Navbar() {
+  const [show, setShow] = useState(false);
+
   return (
-    <nav className={navMain({})}>
-      <div className={navDiv({})}>
-        <div className={subNavDivHboLogo({})}>
-          <HboIcon />
-        </div>
-        <div className={subNavDiv({})}>
-          <NavbarP text="Movies" />
-          <NavbarP text="TV shows" />
-          <NavbarP text="Animations" />
-          <NavbarP text="Upgrade" />
-        </div>
-        <div className={subNavDivIcon({})}>
-          <Icon />
-        </div>
+    <header className={header({})}>
+      <div onClick={() => setShow(!show)}>
+        <HboIcon />
       </div>
-    </nav>
+      <nav className={nav({ show })}>
+        <ul>
+          <li>
+            <Link text="Movies" />
+          </li>
+          <li>
+            <Link text="TV shows" />
+          </li>
+          <li>
+            <Link text="Animations" />
+          </li>
+          <li>
+            <Link text="Upgrade" />
+          </li>
+        </ul>
+      </nav>
+      <div>
+        <Icon />
+      </div>
+    </header>
   );
 }
