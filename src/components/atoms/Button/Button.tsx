@@ -1,8 +1,16 @@
 import React from 'react'
 import button from './Button.styles'
 
-function Button() {
-  return <button className={button({ outlined: false })}>Olá</button>
+type ButtonProps = {
+  label: string
+}
+
+function Button({ label }: ButtonProps) {
+  return (
+    <button className={button({ outlined: false })} data-testid='button'>
+      {label}
+    </button>
+  )
 }
 
 export default Button
