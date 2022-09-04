@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react'
 
-import { avatarContainer, avatarIcon, avatarLabel } from "./Avatar.styles";
+import { avatarContainer, avatarIcon, avatarLabel } from './Avatar.styles'
 
 type AvatarProps = {
-  src: string;
-  alt: string;
-  label: string;
-};
+  src: string
+  alt: string
+  label?: string
+}
 
 export default function Avatar({ src, alt, label }: AvatarProps) {
   return (
@@ -17,7 +17,9 @@ export default function Avatar({ src, alt, label }: AvatarProps) {
         alt={`Esta imagem é do filme: ${alt}`}
         src={`${src}`}
       />
-      <p className={avatarLabel({})}>{label} </p>
+      <p className={avatarLabel({})} data-testid='label'>
+        {label}&nbsp;
+      </p>
     </div>
-  );
+  )
 }

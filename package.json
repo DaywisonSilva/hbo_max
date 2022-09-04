@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest",
-    "test-ui": "vitest --ui"
+    "test": "vitest --coverage",
+    "test-ui": "vitest --ui --coverage"
   },
   "dependencies": {
     "@stitches/core": "^1.2.8",
@@ -23,6 +23,7 @@
     "@types/react": "18.0.11",
     "@types/react-dom": "18.0.5",
     "@vitejs/plugin-react": "^2.0.1",
+    "@vitest/coverage-c8": "^0.22.1",
     "@vitest/ui": "^0.22.1",
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",
