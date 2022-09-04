@@ -20,24 +20,3 @@ exports[`<Avatar/> > should match snapshot 1`] = `
   </div>
 </div>
 `;
-
-exports[`should match snapshot 1`] = `
-<div>
-  <div
-    class="c-gKZQys"
-  >
-    <img
-      alt="Esta imagem é do filme: test"
-      class="c-kRpKXR"
-      src="./image.jpg"
-    />
-    <p
-      class="c-iVfnJB"
-      data-testid="label"
-    >
-      test-label
-       
-    </p>
-  </div>
-</div>
-`;
