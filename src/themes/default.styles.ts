@@ -1,19 +1,19 @@
-import { createStitches } from "@stitches/core";
+import { createStitches } from '@stitches/core'
 
 export const { getCssText } = createStitches({
   theme: {
     colors: {
-      black: "#000",
-      white: "#f2f2f2",
+      black: '#000',
+      white: '#f2f2f2'
     },
     space: {
-      defaultMargin: "20px",
+      defaultMargin: '20px'
     },
     radii: {
-      defaultBorderRadius: "10px",
+      defaultBorderRadius: '10px'
     },
     fonts: {
-      defaultFont: "Montserrat",
-    },
-  },
-});
+      defaultFont: 'Montserrat'
+    }
+  }
+})

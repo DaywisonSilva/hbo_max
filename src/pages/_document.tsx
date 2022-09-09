@@ -1,19 +1,19 @@
-import { Html, Head, Main, NextScript } from "next/document";
-import { DefaultTheme } from "@themes/index";
+import { Html, Head, Main, NextScript } from 'next/document'
+import { DefaultTheme } from '@themes/index'
 
 export default function Document() {
   return (
-    <Html lang="pt-BR">
+    <Html lang='pt-BR'>
       <Head>
         <style
-          id="stitches"
+          id='stitches'
           dangerouslySetInnerHTML={{ __html: DefaultTheme.getCssText() }}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' />
         <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-          rel="stylesheet"
+          href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap'
+          rel='stylesheet'
         />
       </Head>
       <body>
@@ -21,5 +21,5 @@ export default function Document() {
         <NextScript />
       </body>
     </Html>
-  );
+  )
 }
