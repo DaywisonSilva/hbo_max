@@ -4,12 +4,43 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import api from '@services/api'
 import AppLoading from '@components/atoms/AppLoading'
+import { useEffect, useRef, useState } from 'react'
+import { debounce } from '@utils/index'
+import { Transition } from 'react-transition-group'
 
 type HomeProps = {
   movies: Movie[]
 }
 
+const defaultStyle = {
+  transition: `opacity 500ms ease-in-out`,
+  opacity: 0
+}
+
+const transitionStyles = {
+  entering: { opacity: 1 },
+  entered: { opacity: 1 },
+  exiting: { opacity: 0 },
+  exited: { opacity: 0 },
+  unmounted: { opacity: 0 }
+}
+
 const Home: NextPage<HomeProps> = ({ movies }) => {
+  const [loading, setLoading] = useState(true)
+  const refAppLoading = useRef(null)
+
+  const handleWithLoad = () => {
+    debounce(() => setLoading(false), 1800)
+  }
+
+  useEffect(() => {
+    window.addEventListener('load', handleWithLoad)
+
+    return () => {
+      window.removeEventListener('load', handleWithLoad)
+    }
+  }, [])
+
   return (
     <div className={styles.container}>
       <Head>
@@ -18,7 +49,19 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <AppLoading />
+      <Transition in={loading} timeout={1000} nodeRef={refAppLoading}>
+        {(state) => (
+          <div
+            ref={refAppLoading}
+            style={{
+              ...defaultStyle,
+              ...transitionStyles[state]
+            }}
+          >
+            <AppLoading />
+          </div>
+        )}
+      </Transition>
 
       <main className={styles.main}>
         <ul>
