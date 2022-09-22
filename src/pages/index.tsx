@@ -7,6 +7,7 @@ import AppLoading from '@components/atoms/AppLoading'
 import { useEffect, useRef, useState } from 'react'
 import { debounce } from '@utils/index'
 import { Transition } from 'react-transition-group'
+import Hero from '@components/organisms/Hero'
 
 type HomeProps = {
   movies: Movie[]
@@ -33,6 +34,11 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
     debounce(() => setLoading(false), 1800)
   }
 
+  const getVideo = async (movieId: number) => {
+    const video = await api.get(`movie/${movieId}/videos`)
+    console.log(video)
+  }
+
   useEffect(() => {
     window.addEventListener('load', handleWithLoad)
 
@@ -49,7 +55,24 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Transition in={loading} timeout={1000} nodeRef={refAppLoading}>
+      <main className={styles.main}>
+        <Hero />
+        {/* <ul>
+          {movies.map((movie) => {
+            return (
+              <li key={movie.id} onClick={() => getVideo(movie.id)}>
+                {movie.title} {movie.id}
+              </li>
+            )
+          })}
+        </ul> */}
+      </main>
+      <Transition
+        in={loading}
+        timeout={1000}
+        nodeRef={refAppLoading}
+        unmountOnExit
+      >
         {(state) => (
           <div
             ref={refAppLoading}
@@ -62,14 +85,6 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
           </div>
         )}
       </Transition>
-
-      <main className={styles.main}>
-        <ul>
-          {movies.map((movie) => {
-            return <li key={movie.id}>{movie.title}</li>
-          })}
-        </ul>
-      </main>
     </div>
   )
 }

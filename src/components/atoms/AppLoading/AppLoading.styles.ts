@@ -15,6 +15,7 @@ const container = css({
   top: 0,
   left: 0,
   background: '#110011',
+  zIndex: 1,
 
   svg: {
     transform: 'scale(1.8)',
