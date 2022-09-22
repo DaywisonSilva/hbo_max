@@ -29,6 +29,7 @@ const transitionStyles = {
 const Home: NextPage<HomeProps> = ({ movies }) => {
   const [loading, setLoading] = useState(true)
   const refAppLoading = useRef(null)
+  const refMain = useRef<HTMLDivElement>(null)
 
   const handleWithLoad = () => {
     debounce(() => setLoading(false), 1800)
@@ -42,6 +43,12 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
     }
   }, [])
 
+  useEffect(() => {
+    if (!loading) {
+      refMain.current!.style.display = 'flex'
+    }
+  }, [loading])
+
   return (
     <div className={styles.container}>
       <Head>
@@ -50,10 +57,9 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      {!loading && (
-        <main className={styles.main}>
-          <Hero />
-          {/* <ul>
+      <main className={styles.main} style={{ display: 'none' }} ref={refMain}>
+        <Hero />
+        {/* <ul>
           {movies.map((movie) => {
             return (
               <li key={movie.id} onClick={() => getVideo(movie.id)}>
@@ -62,8 +68,7 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
             )
           })}
         </ul> */}
-        </main>
-      )}
+      </main>
       <Transition
         in={loading}
         timeout={1000}
