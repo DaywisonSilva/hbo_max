@@ -34,11 +34,6 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
     debounce(() => setLoading(false), 1800)
   }
 
-  const getVideo = async (movieId: number) => {
-    const video = await api.get(`movie/${movieId}/videos`)
-    console.log(video)
-  }
-
   useEffect(() => {
     window.addEventListener('load', handleWithLoad)
 
@@ -55,9 +50,10 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className={styles.main}>
-        <Hero />
-        {/* <ul>
+      {!loading && (
+        <main className={styles.main}>
+          <Hero />
+          {/* <ul>
           {movies.map((movie) => {
             return (
               <li key={movie.id} onClick={() => getVideo(movie.id)}>
@@ -66,7 +62,8 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
             )
           })}
         </ul> */}
-      </main>
+        </main>
+      )}
       <Transition
         in={loading}
         timeout={1000}
