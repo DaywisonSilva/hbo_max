@@ -27,7 +27,13 @@ const header = css({
   background: 'rgba(0, 0, 0, 0.4)',
   backdropFilter: 'blur(5px)',
   zIndex: 1,
-  transition: 'all .5s cubic-bezier(.46,-0.56,.56,1.47)'
+  transition: 'all .5s cubic-bezier(.46,-0.56,.56,1.47)',
+  [`@media screen and (min-width:  ${breakpoints.lg})`]: {
+    flexDirection: 'row',
+    padding: '30px 50px',
+    margin: '40px 50px 0 50px',
+    width: 'calc(100% - 100px)'
+  }
 })
 
 const containerIcons = css({
@@ -47,16 +53,43 @@ const icon = css({
 const list = css({
   color: '#fff',
   display: 'flex',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  fontSize: '1.5rem',
+  [`@media screen and (min-width:  ${breakpoints.lg})`]: {
+    display: 'flex !important',
+    flexDirection: 'row',
+    width: '100%',
+    minWidth: 600,
+    justifyContent: 'space-between',
+    fontSize: '1.2rem'
+  }
 })
 
 const listItem = css({
-  margin: '6px 0 ',
+  width: 'fit-content',
+  margin: '2px 0 8px 0 ',
   cursor: 'pointer',
   padding: 0,
   opacity: 0,
-  fontSize: '1.5rem',
-  animation: `${showItem} .5s ease-in-out .5s forwards`
+
+  animation: `${showItem} .5s ease-in-out .5s forwards`,
+  '&::after': {
+    content: '',
+    display: 'block',
+    width: '100%',
+    height: 2,
+    transform: 'scaleX(0)',
+    transformOrigin: 'left',
+    position: 'relative',
+    top: 2,
+    transition: 'all .3s ease-in-out'
+  },
+  '&:hover': {
+    '&::after': {
+      backgroundColor: '$primary',
+      transform: 'scaleX(1)'
+    }
+  }
 })
 
 export { header, containerIcons, icon, list, listItem }

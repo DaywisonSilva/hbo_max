@@ -4,7 +4,8 @@ export const { getCssText } = createStitches({
   theme: {
     colors: {
       black: '#000',
-      white: '#f2f2f2'
+      white: '#f2f2f2',
+      primary: '#760076'
     },
     space: {
       defaultMargin: '20px'

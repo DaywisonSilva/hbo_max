@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as Styles from './Header.styles'
 import { Menu } from 'react-feather'
 import { Transition } from 'react-transition-group'
@@ -7,6 +7,7 @@ import { Transition } from 'react-transition-group'
 function Header() {
   const [show, setShow] = useState(false)
   const ref = useRef<HTMLElement>(null)
+  const refMenu = useRef<HTMLUListElement>(null)
 
   const duration = 300
 
@@ -40,35 +41,26 @@ function Header() {
               onClick={() => setShow(!show)}
             />
           </div>
-
-          {show && (
-            <ul className={Styles.list()}>
-              <li
-                className={Styles.listItem()}
-                style={{ animationDelay: '.5s' }}
-              >
-                Movies
-              </li>
-              <li
-                className={Styles.listItem()}
-                style={{ animationDelay: '.7s' }}
-              >
-                TV shows
-              </li>
-              <li
-                className={Styles.listItem()}
-                style={{ animationDelay: '.9s' }}
-              >
-                Animations
-              </li>
-              <li
-                className={Styles.listItem()}
-                style={{ animationDelay: '1.1s' }}
-              >
-                Upgrade
-              </li>
-            </ul>
-          )}
+          <ul
+            className={[Styles.list(), show ? null : 'd-none'].join(' ')}
+            ref={refMenu}
+          >
+            <li className={Styles.listItem()} style={{ animationDelay: '.5s' }}>
+              Movies
+            </li>
+            <li className={Styles.listItem()} style={{ animationDelay: '.7s' }}>
+              TV shows
+            </li>
+            <li className={Styles.listItem()} style={{ animationDelay: '.9s' }}>
+              Animations
+            </li>
+            <li
+              className={Styles.listItem()}
+              style={{ animationDelay: '1.1s' }}
+            >
+              Upgrade
+            </li>
+          </ul>
         </header>
       )}
     </Transition>
