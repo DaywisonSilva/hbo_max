@@ -2,15 +2,35 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
   background-color: #0b0a0a;
+}
+
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+main,
+button,
+section,
+article {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
 }
 
 ul,
 ol {
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 a {
@@ -27,22 +47,23 @@ a {
 }
 
 *::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 /* Track */
 *::-webkit-scrollbar-track {
-  background-color: #110011;
+  background-color: #0b0a0a;
 }
 
 /* Handle */
 *::-webkit-scrollbar-thumb {
   background-color: #290029;
-  border: 2px solid #110011;
+  border: 2px solid #0b0a0a;
+  border-radius: 10px;
 }
 
 /* Handle on hover */
 *::-webkit-scrollbar-thumb:hover {
   cursor: move;
-  background-color: #760076;
+  background-color: #570057;
 }

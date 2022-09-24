@@ -8,9 +8,14 @@ import { useEffect, useRef, useState } from 'react'
 import { debounce } from '@utils/index'
 import { Transition } from 'react-transition-group'
 import Hero from '@components/organisms/Hero'
+import Header from '@components/organisms/Header'
 
 type HomeProps = {
   movies: Movie[]
+  heroData: Movie & {
+    runtime: number
+    genres: Array<{ id: number; name: string }>
+  }
 }
 
 const defaultStyle = {
@@ -26,7 +31,7 @@ const transitionStyles = {
   unmounted: { opacity: 0 }
 }
 
-const Home: NextPage<HomeProps> = ({ movies }) => {
+const Home: NextPage<HomeProps> = ({ movies, heroData }) => {
   const [loading, setLoading] = useState(true)
   const refAppLoading = useRef(null)
   const refMain = useRef<HTMLDivElement>(null)
@@ -57,8 +62,10 @@ const Home: NextPage<HomeProps> = ({ movies }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
+      <Header />
+
       <main className={styles.main} ref={refMain}>
-        <Hero />
+        <Hero data={heroData} />
         {/* <ul>
           {movies.map((movie) => {
             return (
@@ -98,9 +105,12 @@ export const getStaticProps: GetStaticProps = async () => {
     data: { results: movies }
   }: { data: { results: Movie[] } } = await api.get(`movie/popular`)
 
+  const { data: heroData } = await api.get('movie/791373')
+
   return {
     props: {
-      movies
+      movies,
+      heroData
     }
   }
 }
