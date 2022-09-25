@@ -11,10 +11,11 @@ import Hero from '@components/organisms/Hero'
 import Header from '@components/organisms/Header'
 
 type HomeProps = {
-  movies: Movie[]
+  movies: Array<Movie & { certification: Certification | null }>
   heroData: Movie & {
     runtime: number
     genres: Array<{ id: number; name: string }>
+    certification: Certification
   }
 }
 
@@ -99,18 +100,45 @@ const Home: NextPage<HomeProps> = ({ movies, heroData }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  /**
+   * Essas informações do GetStaticProps vão ficar no useEffect com um componente de skeleton
+   */
+
   console.log('\x1b[32m', '\n✅ Index Page created with success')
 
   const {
     data: { results: movies }
   }: { data: { results: Movie[] } } = await api.get(`movie/popular`)
 
-  const { data: heroData } = await api.get('movie/791373')
+  const moviesWithAllData = await Promise.all(
+    movies.map(async (movie) => {
+      const {
+        data: { results }
+      }: { data: { results: Certification[] } } = await api.get(
+        `movie/${movie.id}/release_dates`
+      )
+      const certification =
+        results.find((cert) => cert.iso_3166_1 === 'US') || null
+
+      return { ...movie, certification }
+    })
+  )
+
+  let { data: heroData } = await api.get('movie/791373')
+  const {
+    data: { results: heroResults }
+  }: { data: { results: Certification[] } } = await api.get(
+    `movie/791373/release_dates`
+  )
+
+  const heroCertification = heroResults.find(
+    (heroResult) => heroResult.iso_3166_1 === 'US'
+  )
 
   return {
     props: {
-      movies,
-      heroData
+      movies: moviesWithAllData,
+      heroData: { ...heroData, certification: heroCertification }
     }
   }
 }

@@ -7,7 +7,11 @@ import { Button } from '@components/atoms'
 import { PlayCircle } from 'react-feather'
 
 type HeroProps = {
-  data: Movie & { runtime: number; genres: Array<{ id: number; name: string }> }
+  data: Movie & {
+    runtime: number
+    genres: Array<{ id: number; name: string }>
+    certification: Certification
+  }
 }
 
 function Hero({ data }: HeroProps) {
@@ -28,7 +32,7 @@ function Hero({ data }: HeroProps) {
       <div className={Styles.containerInfo()}>
         <ul className={Styles.infoList()}>
           <li>{data.release_date.split('-')[0]}</li>
-          <li>PG-13</li>
+          <li>{data.certification.release_dates[0].certification}</li>
           <li>{getDuration({ runtime: data.runtime })}</li>
         </ul>
         <h1 className={Styles.title()}>{data.title}</h1>

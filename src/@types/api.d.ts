@@ -14,3 +14,13 @@ type Movie = {
   vote_average: number
   vote_count: number
 }
+
+type Certification = {
+  iso_3166_1: string
+  release_dates: Array<{
+    certification: string
+    iso_639_1: string
+    release_date: string
+    type: number
+  }>
+}
