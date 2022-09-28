@@ -9,6 +9,7 @@ import { debounce } from '@utils/index'
 import { Transition } from 'react-transition-group'
 import Hero from '@components/organisms/Hero'
 import Header from '@components/organisms/Header'
+import { Collection } from '@components/atoms'
 
 type HomeProps = {
   movies: Array<Movie & { certification: Certification | null }>
@@ -67,6 +68,16 @@ const Home: NextPage<HomeProps> = ({ movies, heroData }) => {
 
       <main className={styles.main} ref={refMain}>
         <Hero data={heroData} />
+        <div style={{ width: '100%', height: 200, position: 'relative' }}>
+          <Collection
+            src='https://m.media-amazon.com/images/I/81vTHovrz+L._AC_SL1500_.jpg'
+            alt='homem de ferro'
+          />
+          <Collection
+            src='https://m.media-amazon.com/images/I/81vTHovrz+L._AC_SL1500_.jpg'
+            alt='homem de ferro'
+          />
+        </div>
         {/* <ul>
           {movies.map((movie) => {
             return (
@@ -100,10 +111,6 @@ const Home: NextPage<HomeProps> = ({ movies, heroData }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  /**
-   * Essas informações do GetStaticProps vão ficar no useEffect com um componente de skeleton
-   */
-
   console.log('\x1b[32m', '\n✅ Index Page created with success')
 
   const {
