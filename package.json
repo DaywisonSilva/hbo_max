@@ -17,7 +17,8 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-feather": "^2.0.10",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "swiper": "^8.4.2"
   },
   "devDependencies": {
     "@testing-library/react": "^13.3.0",

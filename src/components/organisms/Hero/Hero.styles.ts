@@ -2,8 +2,6 @@ import { css } from '@stitches/core'
 import breakpoints from '@themes/breakpoints'
 
 const container = css({
-  position: 'absolute',
-  top: 0,
   width: '100%',
   height: '90vh',
   color: '#fff',
@@ -15,6 +13,8 @@ const container = css({
     backgroundImage:
       'linear-gradient(to bottom, transparent, #0B0A0A, #0B0A0A)',
     position: 'absolute',
+    left: 0,
+    maxWidth: 1600,
     bottom: -100
   }
 })
@@ -23,6 +23,8 @@ const video = css({
   width: '100%',
   height: '100%',
   position: 'absolute',
+  maxWidth: 1600,
+  margin: 'auto',
   top: 0,
   left: 0,
   objectFit: 'cover'

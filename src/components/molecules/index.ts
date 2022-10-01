@@ -1,4 +1,5 @@
-import Card from "./Card";
-import Avatar from "./Avatar";
+import Card from './Card'
+import Avatar from './Avatar'
+import CollectionList from './CollectionList'
 
-export { Card, Avatar };
+export { Card, Avatar, CollectionList }

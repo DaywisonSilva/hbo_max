@@ -9,6 +9,10 @@ body + div[is-visible] {
   display: none !important;
 }
 
+.swiper-slide {
+  width: 179px !important;
+}
+
 ul,
 ol,
 li,
