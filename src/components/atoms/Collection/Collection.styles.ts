@@ -1,10 +1,11 @@
 import { css } from '@stitches/core'
 
 const CollectionImageContainer = css({
-  width: 'calc(230px * 0.78) !important',
+  // width: 'calc(230px * 0.78) !important',
+  aspectRatio: '12 / 16',
   minWidth: 'auto !important',
   minHeight: 'auto !important',
-  height: '230px !important',
+  height: '100% !important',
   borderRadius: '5%',
   overflow: 'hidden',
   span: {

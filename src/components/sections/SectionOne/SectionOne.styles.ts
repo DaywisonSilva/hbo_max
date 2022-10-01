@@ -3,7 +3,6 @@ import breakpoints from '@themes/breakpoints'
 
 const SectionOne = css({
   width: '100%',
-  height: 90,
   padding: '30px',
   position: 'relative',
   zIndex: 1,

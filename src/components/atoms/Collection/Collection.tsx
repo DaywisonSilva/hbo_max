@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import { CollectionImage, CollectionImageContainer } from './Collection.styles'
 
 type CollectionProps = {
@@ -9,26 +9,35 @@ type CollectionProps = {
 }
 
 function Collection({ src, alt, link }: CollectionProps) {
+  const [imgSrc, setImgSrc] = useState(src)
+
   return (
     <>
       {link ? (
         <a className={CollectionImageContainer()}>
           <Image
             layout='responsive'
-            src={src}
+            loading='lazy'
+            src={imgSrc}
             alt={alt}
             objectFit='cover'
             className={CollectionImage()}
+            placeholder='blur'
+            blurDataURL='/img/blur.png'
+            onError={() => setImgSrc('/img/error.png')}
           />
         </a>
       ) : (
         <div className={CollectionImageContainer()}>
           <Image
             layout='fill'
-            src={src}
+            src={imgSrc}
             alt={alt}
             className={CollectionImage()}
             objectFit='cover'
+            placeholder='blur'
+            blurDataURL='/img/blur.png'
+            onError={() => setImgSrc('/img/error.png')}
           />
         </div>
       )}

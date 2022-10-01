@@ -29,7 +29,7 @@ function Header() {
         >
           <div className={Styles.containerIcons()}>
             <Image
-              src='/img/logo.svg'
+              src='/img/Logo.svg'
               alt='logo hbo max'
               width={132}
               height={30}

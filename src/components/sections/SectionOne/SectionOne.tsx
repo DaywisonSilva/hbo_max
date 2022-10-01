@@ -2,10 +2,16 @@ import { CollectionList } from '@components/molecules'
 import React from 'react'
 import * as Styles from './SectionOne.styles'
 
-function SectionOne() {
+type SectionOneProps = {
+  collections: Movie[]
+}
+
+function SectionOne({ collections }: SectionOneProps) {
   return (
     <section className={Styles.SectionOne()}>
-      <CollectionList />
+      <CollectionList title='Popular Collections' collections={collections} />
+      <CollectionList title='Popular Collections' collections={collections} />
+      <CollectionList title='Popular Collections' collections={collections} />
     </section>
   )
 }

@@ -10,6 +10,8 @@ import Hero from '@components/organisms/Hero'
 import Header from '@components/organisms/Header'
 import breakpoints from '@themes/breakpoints'
 import SectionOne from '@components/sections/SectionOne'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 type HomeProps = {
   movies: Array<Movie & { certification: Certification | null }>
@@ -52,6 +54,9 @@ const Home: NextPage<HomeProps> = ({ movies, heroData }) => {
 
   useEffect(() => {
     if (!loading) {
+      setTimeout(() => {
+        AOS.init()
+      }, 1000)
       refMain.current!.style.display = 'block'
     }
   }, [loading])
@@ -112,7 +117,7 @@ const Home: NextPage<HomeProps> = ({ movies, heroData }) => {
 
       <main className={styles.main} ref={refMain}>
         <Hero data={heroData} />
-        <SectionOne />
+        <SectionOne collections={movies} />
       </main>
 
       {/* LOADING APP */}

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@stitches/core": "^1.2.8",
+    "aos": "3.0.0-beta.6",
     "axios": "^0.27.2",
     "next": "12.1.6",
     "react": "18.1.0",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.3",
+    "@types/aos": "^3.0.4",
     "@types/node": "17.0.40",
     "@types/react": "18.0.11",
     "@types/react-dom": "18.0.5",
