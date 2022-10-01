@@ -33,11 +33,11 @@ const video = css({
 const containerInfo = css({
   position: 'absolute',
   left: 30,
-  bottom: 10,
+  bottom: 0,
   width: 'calc(100% - 60px)',
   maxWidth: 600,
   zIndex: 1,
-  transform: 'scale(.6)',
+  transform: 'scale(.5)',
   transformOrigin: 'left bottom',
   [`@media screen and (min-height: 560px)`]: {
     bottom: 100,

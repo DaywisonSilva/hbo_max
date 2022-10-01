@@ -26,7 +26,7 @@ const header = css({
   backdropFilter: 'blur(5px)',
   zIndex: 2,
   position: 'fixed',
-  top: 20,
+  top: 10,
   left: 25,
   userSelect: 'none',
   transition: 'all .5s cubic-bezier(.46,-0.56,.56,1.47)',
