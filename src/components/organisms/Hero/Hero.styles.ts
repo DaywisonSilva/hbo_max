@@ -33,10 +33,16 @@ const video = css({
 const containerInfo = css({
   position: 'absolute',
   left: 30,
-  bottom: 100,
+  bottom: 10,
   width: 'calc(100% - 60px)',
   maxWidth: 600,
   zIndex: 1,
+  transform: 'scale(.6)',
+  transformOrigin: 'left bottom',
+  [`@media screen and (min-height: 560px)`]: {
+    bottom: 100,
+    transform: 'scale(1)'
+  },
   [`@media screen and (min-width: ${breakpoints.lg})`]: {
     left: 50,
     top: '35%'

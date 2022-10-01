@@ -4,6 +4,7 @@ import breakpoints from '@themes/breakpoints'
 const SectionOne = css({
   width: '100%',
   padding: '30px',
+  top: 40,
   position: 'relative',
   zIndex: 1,
 
