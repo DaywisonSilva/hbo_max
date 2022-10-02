@@ -1,5 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next'
-
+import fs from 'node:fs/promises'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import api from '@services/api'
@@ -12,6 +12,7 @@ import breakpoints from '@themes/breakpoints'
 import SectionOne from '@components/sections/SectionOne'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { GenreContext } from 'context'
 
 type HomeProps = {
   movies: Array<Movie & { certification: Certification | null }>
@@ -22,6 +23,7 @@ type HomeProps = {
     genres: Array<{ id: number; name: string }>
     certification: Certification
   }
+  genreData: { movie: Genre[]; tv: Genre[] }
 }
 
 const defaultStyle = {
@@ -41,7 +43,8 @@ const Home: NextPage<HomeProps> = ({
   movies,
   seasons,
   mostPopular,
-  heroData
+  heroData,
+  genreData
 }) => {
   const [loading, setLoading] = useState(true)
   const refAppLoading = useRef(null)
@@ -55,7 +58,7 @@ const Home: NextPage<HomeProps> = ({
     window.addEventListener('load', handleWithLoad)
 
     return () => {
-      window.removeEventListener('load', handleWithLoad)
+      window.removeEventListener('DOMContentLoaded', handleWithLoad)
     }
   }, [])
 
@@ -123,8 +126,10 @@ const Home: NextPage<HomeProps> = ({
       <Header />
 
       <main className={styles.main} ref={refMain}>
-        <Hero data={heroData} />
-        <SectionOne data={{ movies, seasons, mostPopular }} />
+        <GenreContext.Provider value={genreData}>
+          <Hero data={heroData} />
+          <SectionOne data={{ movies, seasons, mostPopular }} />
+        </GenreContext.Provider>
       </main>
 
       {/* LOADING APP */}
@@ -165,6 +170,14 @@ const Home: NextPage<HomeProps> = ({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const {
+    data: { genres: genreMovieList }
+  }: { data: { genres: Genre[] } } = await api.get(`genre/movie/list`)
+
+  const {
+    data: { genres: genreTvList }
+  }: { data: { genres: Genre[] } } = await api.get(`genre/movie/list`)
+
   console.log('\x1b[32m', '\n✅ Index Page created with success')
 
   const {
@@ -184,7 +197,7 @@ export const getStaticProps: GetStaticProps = async () => {
       const {
         data: { results }
       }: { data: { results: Certification[] } } = await api.get(
-        `movie/${movie.id}/release_dates`
+        `/movie/${movie.id}/release_dates`
       )
       const certification =
         results.find((cert) => cert.iso_3166_1 === 'US') || null
@@ -209,7 +222,8 @@ export const getStaticProps: GetStaticProps = async () => {
       movies: moviesWithAllData,
       seasons: tvSeasons,
       mostPopular,
-      heroData: { ...heroData, certification: heroCertification }
+      heroData: { ...heroData, certification: heroCertification },
+      genreData: { movie: [...genreMovieList], tv: [...genreTvList] }
     }
   }
 }

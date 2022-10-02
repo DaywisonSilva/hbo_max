@@ -6,7 +6,7 @@ import { FreeMode } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 // Components
-import { Collection } from '@components/atoms'
+import { Card, Collection } from '@components/atoms'
 
 type CollectionListProps = {
   title: string

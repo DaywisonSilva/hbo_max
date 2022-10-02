@@ -4,10 +4,11 @@ import breakpoints from '@themes/breakpoints'
 const Container = css({
   userSelect: 'none',
   cursor: 'grab',
-  height: 200,
-  marginBottom: 20,
+  minHeight: 180,
+  marginBottom: 30,
   [`@media screen and (min-width: ${breakpoints.md})`]: {
-    height: 250
+    minHeight: 250,
+    marginBottom: 50
   }
 })
 
@@ -24,9 +25,11 @@ const SwiperContainer = css({
 })
 
 const SwiperSlide = css({
+  width: '97.5px !important',
   height: 130,
   [`@media screen and (min-width: ${breakpoints.md})`]: {
-    height: 200
+    height: 200,
+    width: '170px !important'
   }
 })
 

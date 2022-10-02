@@ -10,12 +10,12 @@ body + div[is-visible] {
 }
 
 .swiper-slide {
-  width: 97.5px !important;
+  /* width: 97.5px !important; */
 }
 
 @media screen and (min-width: 768px) {
   .swiper-slide {
-    width: 170px !important;
+    /* width: 170px !important; */
   }
 }
 
