@@ -21,7 +21,13 @@ function CollectionList({ title, collections }: CollectionListProps) {
         freeMode
         slidesPerView={'auto'}
         modules={[FreeMode]}
+        spaceBetween={20}
         className={Styles.SwiperContainer()}
+        breakpoints={{
+          768: {
+            spaceBetween: 0
+          }
+        }}
       >
         {collections.map((collection, i) => {
           return (
