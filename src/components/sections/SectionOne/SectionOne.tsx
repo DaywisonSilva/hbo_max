@@ -3,15 +3,19 @@ import React from 'react'
 import * as Styles from './SectionOne.styles'
 
 type SectionOneProps = {
-  collections: Movie[]
+  data: {
+    movies: Movie[]
+    seasons: TVSeason[]
+    mostPopular: MostPupular[]
+  }
 }
 
-function SectionOne({ collections }: SectionOneProps) {
+function SectionOne({ data }: SectionOneProps) {
   return (
     <section className={Styles.SectionOne()}>
-      <CollectionList title='Popular Collections' collections={collections} />
-      <CollectionList title='Popular Collections' collections={collections} />
-      <CollectionList title='Popular Collections' collections={collections} />
+      <CollectionList title='The Top Trending' collections={data.mostPopular} />
+      <CollectionList title='Popular Movies' collections={data.movies} />
+      <CollectionList title='Popular TV Shows' collections={data.seasons} />
     </section>
   )
 }

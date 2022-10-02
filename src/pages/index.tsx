@@ -15,6 +15,8 @@ import 'aos/dist/aos.css'
 
 type HomeProps = {
   movies: Array<Movie & { certification: Certification | null }>
+  seasons: Array<TVSeason & { certification: Certification | null }>
+  mostPopular: Array<MostPupular & { certification: Certification | null }>
   heroData: Movie & {
     runtime: number
     genres: Array<{ id: number; name: string }>
@@ -35,7 +37,12 @@ const transitionStyles = {
   unmounted: { opacity: 0 }
 }
 
-const Home: NextPage<HomeProps> = ({ movies, heroData }) => {
+const Home: NextPage<HomeProps> = ({
+  movies,
+  seasons,
+  mostPopular,
+  heroData
+}) => {
   const [loading, setLoading] = useState(true)
   const refAppLoading = useRef(null)
   const refMain = useRef<HTMLDivElement>(null)
@@ -79,7 +86,7 @@ const Home: NextPage<HomeProps> = ({ movies, heroData }) => {
             position: fixed;
             top: 0;
             left: 0;
-            background: #110011;
+            background: linear-gradient(45deg, #110011, #740092);
             z-index: 3;
           }
 
@@ -117,7 +124,7 @@ const Home: NextPage<HomeProps> = ({ movies, heroData }) => {
 
       <main className={styles.main} ref={refMain}>
         <Hero data={heroData} />
-        <SectionOne collections={movies} />
+        <SectionOne data={{ movies, seasons, mostPopular }} />
       </main>
 
       {/* LOADING APP */}
@@ -164,6 +171,14 @@ export const getStaticProps: GetStaticProps = async () => {
     data: { results: movies }
   }: { data: { results: Movie[] } } = await api.get(`movie/popular`)
 
+  const {
+    data: { results: tvSeasons }
+  }: { data: { results: TVSeason[] } } = await api.get(`tv/popular`)
+
+  const {
+    data: { results: mostPopular }
+  }: { data: { results: TVSeason[] } } = await api.get(`trending/movie/week`)
+
   const moviesWithAllData = await Promise.all(
     movies.map(async (movie) => {
       const {
@@ -192,6 +207,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       movies: moviesWithAllData,
+      seasons: tvSeasons,
+      mostPopular,
       heroData: { ...heroData, certification: heroCertification }
     }
   }

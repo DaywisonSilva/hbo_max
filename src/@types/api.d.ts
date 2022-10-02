@@ -24,3 +24,7 @@ type Certification = {
     type: number
   }>
 }
+
+type MostPupular = Movie & { media_type: 'all' | 'movie' | 'tv' | 'person' }
+
+type TVSeason = Movie

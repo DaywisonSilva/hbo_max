@@ -1,8 +1,48 @@
-import React from 'react'
-import { card } from './Card.styles'
+import Image from 'next/image'
+import React, { useState } from 'react'
+import { CollectionImage, CollectionImageContainer } from './Card.styles'
 
-function Card() {
-  return <div className={card()}></div>
+type CollectionProps = {
+  src: string
+  alt: string
+  link?: string
 }
 
-export default Card
+function Collection({ src, alt, link }: CollectionProps) {
+  const [imgSrc, setImgSrc] = useState(src)
+
+  return (
+    <>
+      {link ? (
+        <a className={CollectionImageContainer()}>
+          <Image
+            layout='responsive'
+            loading='lazy'
+            src={imgSrc}
+            alt={alt}
+            objectFit='cover'
+            className={CollectionImage()}
+            placeholder='blur'
+            blurDataURL='/img/blur.png'
+            onError={() => setImgSrc('/img/error.png')}
+          />
+        </a>
+      ) : (
+        <div className={CollectionImageContainer()}>
+          <Image
+            layout='fill'
+            src={imgSrc}
+            alt={alt}
+            className={CollectionImage()}
+            objectFit='cover'
+            placeholder='blur'
+            blurDataURL='/img/blur.png'
+            onError={() => setImgSrc('/img/error.png')}
+          />
+        </div>
+      )}
+    </>
+  )
+}
+
+export default Collection

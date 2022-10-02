@@ -1,7 +1,6 @@
 import { css } from '@stitches/core'
 
 const CollectionImageContainer = css({
-  // width: 'calc(230px * 0.78) !important',
   aspectRatio: '12 / 16',
   minWidth: 'auto !important',
   minHeight: 'auto !important',
@@ -18,7 +17,14 @@ const CollectionImageContainer = css({
 const CollectionImage = css({
   width: '100% !important',
   height: '100% !important',
-  position: 'relative !important'
+  position: 'relative !important',
+  userSelect: 'none',
+  touchCallout: 'none',
+  transition: 'all .3s ease-in-out',
+  '&:hover': {
+    transform: 'scale(1.2)',
+    cursor: 'pointer'
+  }
 })
 
 export { CollectionImage, CollectionImageContainer }

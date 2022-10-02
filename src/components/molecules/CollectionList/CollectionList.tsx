@@ -20,7 +20,6 @@ function CollectionList({ title, collections }: CollectionListProps) {
       <Swiper
         freeMode
         slidesPerView={'auto'}
-        spaceBetween={20}
         modules={[FreeMode]}
         className={Styles.SwiperContainer()}
       >
