@@ -16,7 +16,7 @@ import { GenreContext } from 'context'
 
 type HomeProps = {
   movies: Array<Movie & { certification: Certification | null }>
-  seasons: Array<TVSeason & { certification: Certification | null }>
+  seasons: Array<TrendingMovie & { certification: Certification | null }>
   mostPopular: Array<MostPupular & { certification: Certification | null }>
   heroData: Movie & {
     runtime: number
