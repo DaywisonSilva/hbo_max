@@ -5,7 +5,7 @@ import * as Styles from './SectionOne.styles'
 type SectionOneProps = {
   data: {
     movies: Movie[]
-    seasons: TrendingMovie[]
+    seasons: TVshow[]
     mostPopular: MostPupular[]
   }
 }

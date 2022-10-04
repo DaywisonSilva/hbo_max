@@ -25,7 +25,14 @@ function Hero({ data }: HeroProps) {
 
   return (
     <section className={Styles.container()}>
-      <video autoPlay muted loop className={Styles.video()} ref={videoRef}>
+      <video
+        autoPlay
+        muted
+        loop
+        className={Styles.video()}
+        ref={videoRef}
+        onContextMenu={(e) => e.preventDefault()}
+      >
         <source src='justice_league.mp4' type='video/mp4' />
         Your browser does not support HTML5 video.
       </video>

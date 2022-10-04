@@ -3,7 +3,7 @@ import React from 'react'
 import { GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
-function Movie({ title }: Movie) {
+function Movie({ title }: Movie & { slug: string }) {
   return <div>{title}</div>
 }
 
@@ -30,20 +30,25 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   let movies: Movie[] = []
 
   try {
-    const { data }: { data: { results: Movie[] } } = await api.get(
-      '/movie/popular'
-    )
-    movies = data.results
+    const {
+      data: { results: moviesData }
+    }: { data: { results: Movie[] } } = await api.get('/movie/popular')
+
+    const {
+      data: { results: mostPopular }
+    }: { data: { results: TVSeason[] } } = await api.get(`trending/movie/week`)
+
+    movies = [...moviesData, ...mostPopular]
   } catch (e) {
     console.error(e)
   }
 
   const paths = movies.map((movie) => ({
-    params: { id: movie.id.toString(), name: 'teste' }
+    params: { id: movie.id.toString() }
   }))
 
   return {

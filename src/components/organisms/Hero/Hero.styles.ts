@@ -14,7 +14,6 @@ const container = css({
       'linear-gradient(to bottom, transparent, #0B0A0A, #0B0A0A)',
     position: 'absolute',
     left: 0,
-    maxWidth: 1600,
     bottom: -100
   }
 })
@@ -27,7 +26,8 @@ const video = css({
   margin: 'auto',
   top: 0,
   left: 0,
-  objectFit: 'cover'
+  objectFit: 'cover',
+  userSelect: 'none'
 })
 
 const containerInfo = css({

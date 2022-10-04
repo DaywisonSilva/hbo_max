@@ -10,7 +10,7 @@ import { Card } from '@components/atoms'
 
 type CollectionListProps = {
   title: string
-  collections: TrendingMovie[]
+  collections: TVshow[]
 }
 
 function CollectionList({ title, collections }: CollectionListProps) {
@@ -48,6 +48,7 @@ function CollectionList({ title, collections }: CollectionListProps) {
                     'https://image.tmdb.org/t/p/original/' +
                     collection.backdrop_path
                   }
+                  id={collection.id}
                   genre={collection.genre_ids}
                   alt={collection.name}
                   title={collection.name}

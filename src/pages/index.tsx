@@ -1,5 +1,4 @@
 import type { GetStaticProps, NextPage } from 'next'
-import fs from 'node:fs/promises'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import api from '@services/api'
@@ -13,10 +12,11 @@ import SectionOne from '@components/sections/SectionOne'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { GenreContext } from 'context'
+import { Router } from 'next/router'
 
 type HomeProps = {
   movies: Array<Movie & { certification: Certification | null }>
-  seasons: Array<TrendingMovie & { certification: Certification | null }>
+  seasons: Array<TVshow & { certification: Certification | null }>
   mostPopular: Array<MostPupular & { certification: Certification | null }>
   heroData: Movie & {
     runtime: number
@@ -55,7 +55,9 @@ const Home: NextPage<HomeProps> = ({
   }
 
   useEffect(() => {
-    window.addEventListener('load', handleWithLoad)
+    setTimeout(() => {
+      handleWithLoad()
+    }, 100)
 
     return () => {
       window.removeEventListener('DOMContentLoaded', handleWithLoad)
@@ -169,14 +171,14 @@ const Home: NextPage<HomeProps> = ({
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const {
     data: { genres: genreMovieList }
   }: { data: { genres: Genre[] } } = await api.get(`genre/movie/list`)
 
   const {
     data: { genres: genreTvList }
-  }: { data: { genres: Genre[] } } = await api.get(`genre/movie/list`)
+  }: { data: { genres: Genre[] } } = await api.get(`genre/tv/list`)
 
   console.log('\x1b[32m', '\n✅ Index Page created with success')
 
