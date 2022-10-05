@@ -2,9 +2,7 @@ import { css } from '@stitches/core'
 
 const Container = css({
   width: '100%',
-  height: '90vh',
-  backgroundSize: 'cover',
-  backgroundPosition: 'top center',
+  height: '100vh',
   position: 'relative',
   '&::before': {
     content: '',

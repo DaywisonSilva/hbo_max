@@ -1,8 +1,9 @@
 import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import * as Styles from './Header.styles'
 import { Menu } from 'react-feather'
 import { Transition } from 'react-transition-group'
+import Link from 'next/link'
 
 function Header() {
   const [show, setShow] = useState(false)
@@ -28,13 +29,17 @@ function Header() {
           style={{ ...transitionStyles[state] }}
         >
           <div className={Styles.containerIcons()}>
-            <Image
-              src='/img/Logo.svg'
-              alt='logo hbo max'
-              width={132}
-              height={30}
-              objectFit='contain'
-            />
+            <Link href='/'>
+              <a>
+                <Image
+                  src='/img/Logo.svg'
+                  alt='logo hbo max'
+                  width={132}
+                  height={30}
+                  objectFit='contain'
+                />
+              </a>
+            </Link>
             <Menu
               className={Styles.icon()}
               size={30}
@@ -46,19 +51,19 @@ function Header() {
             ref={refMenu}
           >
             <li className={Styles.listItem()} style={{ animationDelay: '.5s' }}>
-              Movies
+              Home
             </li>
             <li className={Styles.listItem()} style={{ animationDelay: '.7s' }}>
-              TV shows
+              Movies
             </li>
             <li className={Styles.listItem()} style={{ animationDelay: '.9s' }}>
-              Animations
+              TV shows
             </li>
             <li
               className={Styles.listItem()}
               style={{ animationDelay: '1.1s' }}
             >
-              Upgrade
+              Animations
             </li>
           </ul>
         </header>
