@@ -5,6 +5,7 @@ import getDuration from '@utils/getDuration'
 import Image from 'next/image'
 import { Button } from '@components/atoms'
 import { PlayCircle } from 'react-feather'
+import { ListInfo } from '@components/molecules'
 
 type HeroProps = {
   data: Movie & {
@@ -37,13 +38,13 @@ function Hero({ data }: HeroProps) {
         Your browser does not support HTML5 video.
       </video>
       <div className={Styles.containerInfo()}>
-        <ul className={Styles.infoList()}>
-          <li>{data.release_date.split('-')[0]}</li>
-          <li>{data.certification.release_dates[0].certification}</li>
-          <li>{getDuration({ runtime: data.runtime })}</li>
-        </ul>
+        <ListInfo
+          year={data.release_date.split('-')[0]}
+          certification={data.certification.release_dates[0].certification}
+          duration={getDuration({ runtime: data.runtime })}
+        />
         <h1 className={Styles.title()}>{data.title}</h1>
-        <ul className={Styles.infoList({ type: 'genres' })}>
+        <ListInfo type='genres'>
           {data.genres.map((genre) => {
             return (
               <li key={genre.id} style={{ whiteSpace: 'nowrap' }}>
@@ -51,7 +52,7 @@ function Hero({ data }: HeroProps) {
               </li>
             )
           })}
-        </ul>
+        </ListInfo>
         <div className={Styles.star()}>
           <Image
             width={40}

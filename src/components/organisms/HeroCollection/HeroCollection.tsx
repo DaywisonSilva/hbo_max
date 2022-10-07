@@ -1,3 +1,5 @@
+import { ListInfo } from '@components/molecules'
+import getDuration from '@utils/getDuration'
 import Image from 'next/image'
 import React from 'react'
 import * as Styles from './HeroCollection.styles'
@@ -13,6 +15,7 @@ function HeroCollection({ data }: { data: TVshow }) {
         objectFit='cover'
         objectPosition={'top center'}
       />
+      <ListInfo year={data.first_air_date.split('-')[0]} />
     </div>
   )
 }

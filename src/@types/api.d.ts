@@ -27,7 +27,10 @@ type Certification = {
 
 type Genre = { id: number; name: string }
 
-type TVshow = Omit<Movie, 'title'> & { name: string }
+type TVshow = Omit<Movie, 'title' | 'release_date'> & {
+  name: string
+  first_air_date: string
+}
 
 type MostPupular = Movie & { media_type: 'all' | 'movie' | 'tv' | 'person' }
 
