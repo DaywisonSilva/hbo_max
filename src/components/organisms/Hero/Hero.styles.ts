@@ -22,7 +22,6 @@ const video = css({
   width: '100%',
   height: '100%',
   position: 'absolute',
-  maxWidth: 1600,
   margin: 'auto',
   top: 0,
   left: 0,

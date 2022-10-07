@@ -50,9 +50,14 @@ function Header() {
             className={[Styles.list(), show ? null : 'd-none'].join(' ')}
             ref={refMenu}
           >
-            <li className={Styles.listItem()} style={{ animationDelay: '.5s' }}>
-              Home
-            </li>
+            <Link href='/'>
+              <li
+                className={Styles.listItem()}
+                style={{ animationDelay: '.5s' }}
+              >
+                Home
+              </li>
+            </Link>
             <li className={Styles.listItem()} style={{ animationDelay: '.7s' }}>
               Movies
             </li>
