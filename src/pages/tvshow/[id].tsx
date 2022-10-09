@@ -4,10 +4,20 @@ import { GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import Header from '@components/organisms/Header'
 import HeroCollection from '@components/organisms/HeroCollection'
+import Head from 'next/head'
 
 function Season(data: TVshow & { slug: string }) {
   return (
     <>
+      <Head>
+        <meta property='og:title' content={data.name} />
+        <meta property='og:type' content='movie' />
+        <meta
+          property='og:url'
+          content='https://hbo-max-redesign.netlify.app/'
+        />
+        <meta property='og:image' content={data.backdrop_path} />
+      </Head>
       <Header />
       <main>
         <HeroCollection data={data} />
