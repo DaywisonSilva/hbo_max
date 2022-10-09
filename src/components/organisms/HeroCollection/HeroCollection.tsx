@@ -1,5 +1,4 @@
-import { ListInfo } from '@components/molecules'
-import getDuration from '@utils/getDuration'
+import { Synopsis } from '@components/molecules'
 import Image from 'next/image'
 import React from 'react'
 import ContainerInfo from '../ContainerInfo'
@@ -21,7 +20,12 @@ function HeroCollection({ data }: HeroCollection) {
         objectPosition={'top center'}
       />
 
-      <ContainerInfo data={{ ...data, release_date: data.first_air_date }} />
+      <ContainerInfo
+        data={{ ...data, release_date: data.first_air_date }}
+        page={'content'}
+      />
+
+      {/* <Synopsis content={data.overview} /> */}
     </div>
   )
 }

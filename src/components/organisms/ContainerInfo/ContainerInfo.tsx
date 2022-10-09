@@ -1,5 +1,5 @@
 import { Button } from '@components/atoms'
-import { ListInfo } from '@components/molecules'
+import { ListInfo, Synopsis } from '@components/molecules'
 import getDuration from '@utils/getDuration'
 import Image from 'next/image'
 import React from 'react'
@@ -15,12 +15,14 @@ type ContainerInfoProps = {
     title?: string
     name?: string
     vote_average: number
+    overview: string
   }
+  page?: 'content'
 }
 
-function ContainerInfo({ data }: ContainerInfoProps) {
+function ContainerInfo({ data, page = undefined }: ContainerInfoProps) {
   return (
-    <div className={Styles.containerInfo()}>
+    <div className={Styles.containerInfo({ page })}>
       <div style={{ zIndex: 2, position: 'relative' }}>
         <ListInfo
           year={data.release_date!.split('-')[0] || ''}
@@ -53,6 +55,8 @@ function ContainerInfo({ data }: ContainerInfoProps) {
             <span>Watch Now</span>
           </span>
         </Button>
+        <div style={{ marginBottom: 50 }}></div>
+        <Synopsis content={data.overview} />
       </div>
     </div>
   )

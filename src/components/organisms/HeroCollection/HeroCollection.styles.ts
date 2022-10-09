@@ -4,6 +4,7 @@ const Container = css({
   width: '100%',
   height: '100vh',
   position: 'relative',
+  color: 'white',
   '&::before': {
     content: '',
     display: 'block',

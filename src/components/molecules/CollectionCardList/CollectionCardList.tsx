@@ -45,7 +45,7 @@ function CollectionList({ title, collections }: CollectionListProps) {
               >
                 <Card
                   src={
-                    'https://image.tmdb.org/t/p/original/' +
+                    'https://image.tmdb.org/t/p/w500/' +
                     collection.backdrop_path
                   }
                   id={collection.id}

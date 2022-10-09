@@ -38,6 +38,29 @@ const header = css({
     padding: '30px 50px',
     margin: '40px 50px 0 50px',
     width: 'calc(100% - 100px)'
+  },
+  variants: {
+    page: {
+      content: {
+        backgroundColor: 'transparent',
+        backdropFilter: 'none',
+        top: 0,
+        padding: 0,
+        ul: {
+          textShadow: '0 0 10px #000',
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          padding: 20,
+          position: 'relative',
+          top: 20,
+          borderRadius: 20,
+          [`@media screen and (min-width:  ${breakpoints.lg})`]: {
+            backgroundColor: 'transparent',
+            padding: 0,
+            position: 'static'
+          }
+        }
+      }
+    }
   }
 })
 

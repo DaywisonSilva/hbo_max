@@ -5,7 +5,11 @@ import { Menu } from 'react-feather'
 import { Transition } from 'react-transition-group'
 import Link from 'next/link'
 
-function Header() {
+type HeaderProps = {
+  hasBackground?: boolean
+}
+
+function Header({ hasBackground = true }: HeaderProps) {
   const [show, setShow] = useState(false)
   const ref = useRef<HTMLElement>(null)
   const refMenu = useRef<HTMLUListElement>(null)
@@ -24,7 +28,9 @@ function Header() {
     <Transition nodeRef={ref} in={show} timeout={duration}>
       {(state) => (
         <header
-          className={Styles.header()}
+          className={Styles.header({
+            page: hasBackground ? undefined : 'content'
+          })}
           ref={ref}
           style={{ ...transitionStyles[state] }}
         >

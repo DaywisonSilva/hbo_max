@@ -3,7 +3,6 @@ import breakpoints from '@themes/breakpoints'
 
 const Container = css({
   userSelect: 'none',
-  cursor: 'grab',
   minHeight: 200,
   marginBottom: 30,
   marginTop: 20,

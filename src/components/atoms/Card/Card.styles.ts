@@ -2,6 +2,7 @@ import { css } from '@stitches/core'
 import breakpoints from '@themes/breakpoints'
 
 const CollectionImageContainer = css({
+  cursor: 'pointer',
   aspectRatio: '12 / 8',
   minWidth: 'auto !important',
   minHeight: 'auto !important',
@@ -9,6 +10,10 @@ const CollectionImageContainer = css({
   borderRadius: '5%',
   overflow: 'hidden',
   position: 'relative',
+  transition: 'all .2s ease-in-out',
+  '&:active': {
+    transform: 'translateY(5px)'
+  },
   span: {
     position: 'relative !important',
     width: '100% !important',

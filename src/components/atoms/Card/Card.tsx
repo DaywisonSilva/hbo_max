@@ -27,6 +27,7 @@ function Card({ src, alt, genre, mediaType, title, id }: CollectionProps) {
           layout='fill'
           src={imgSrc}
           alt={alt}
+          quality={100}
           className={Styles.CollectionImage()}
           objectFit='cover'
           placeholder='blur'

@@ -32,6 +32,15 @@ const containerInfo = css({
   [`@media screen and (min-width: ${breakpoints.lg})`]: {
     left: 50,
     top: '35%'
+  },
+  variants: {
+    page: {
+      content: {
+        [`@media screen and (min-width: ${breakpoints.lg})`]: {
+          top: '20%'
+        }
+      }
+    }
   }
 })
 
