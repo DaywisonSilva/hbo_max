@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Button } from '@components/atoms'
 import { PlayCircle } from 'react-feather'
 import { ListInfo } from '@components/molecules'
+import ContainerInfo from '../ContainerInfo'
 
 type HeroProps = {
   data: Movie & {
@@ -37,39 +38,8 @@ function Hero({ data }: HeroProps) {
         <source src='justice_league.mp4' type='video/mp4' />
         Your browser does not support HTML5 video.
       </video>
-      <div className={Styles.containerInfo()}>
-        <ListInfo
-          year={data.release_date.split('-')[0]}
-          certification={data.certification.release_dates[0].certification}
-          duration={getDuration({ runtime: data.runtime })}
-        />
-        <h1 className={Styles.title()}>{data.title}</h1>
-        <ListInfo type='genres'>
-          {data.genres.map((genre) => {
-            return (
-              <li key={genre.id} style={{ whiteSpace: 'nowrap' }}>
-                {genre.name}
-              </li>
-            )
-          })}
-        </ListInfo>
-        <div className={Styles.star()}>
-          <Image
-            width={40}
-            height={40}
-            src='/img/star.svg'
-            objectFit='contain'
-            alt='rate'
-          />
-          <span>{data.vote_average.toFixed(2)}</span>
-        </div>
-        <Button outlined>
-          <span className={Styles.buttonContainer()}>
-            <PlayCircle />
-            <span>Watch Now</span>
-          </span>
-        </Button>
-      </div>
+
+      <ContainerInfo data={data} />
 
       <div className={Styles.containerIcon()} onClick={handleWithVolume}>
         {hasAudio ? (

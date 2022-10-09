@@ -17,4 +17,6 @@ const Container = css({
   }
 })
 
-export { Container }
+const ContainerInfo = css({ position: 'relative', color: 'white' })
+
+export { Container, ContainerInfo }
