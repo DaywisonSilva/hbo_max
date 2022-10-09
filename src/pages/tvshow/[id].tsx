@@ -16,7 +16,10 @@ function Season(data: TVshow & { slug: string }) {
           property='og:url'
           content='https://hbo-max-redesign.netlify.app/'
         />
-        <meta property='og:image' content={data.backdrop_path} />
+        <meta
+          property='og:image'
+          content={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
+        />
       </Head>
       <Header />
       <main>
