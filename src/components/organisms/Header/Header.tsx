@@ -17,8 +17,8 @@ function Header({ hasBackground = true }: HeaderProps) {
   const duration = 300
 
   const transitionStyles = {
-    entering: { height: 300 },
-    entered: { height: 300 },
+    entering: { height: hasBackground ? 300 : 250 },
+    entered: { height: hasBackground ? 300 : 250 },
     exiting: { height: 90 },
     exited: { height: 90 },
     unmounted: { height: 90 }

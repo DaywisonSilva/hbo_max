@@ -44,14 +44,14 @@ const header = css({
       content: {
         backgroundColor: 'transparent',
         backdropFilter: 'none',
-        top: 0,
+        top: 10,
         padding: 0,
         ul: {
           textShadow: '0 0 10px #000',
           backgroundColor: 'rgba(0, 0, 0, 0.4)',
           padding: 20,
           position: 'relative',
-          top: 20,
+          top: 0,
           borderRadius: 20,
           [`@media screen and (min-width:  ${breakpoints.lg})`]: {
             backgroundColor: 'transparent',
