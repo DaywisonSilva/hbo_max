@@ -22,10 +22,6 @@ function HeroCollection({ data }: HeroCollection) {
       />
 
       <ContainerInfo data={{ ...data, release_date: data.first_air_date }} />
-
-      {/* <div className={Styles.ContainerInfo()}>
-        <span>{data.first_air_date.split('-')[0]}</span>
-      </div> */}
     </div>
   )
 }
