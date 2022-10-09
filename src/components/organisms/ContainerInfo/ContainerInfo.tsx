@@ -55,8 +55,12 @@ function ContainerInfo({ data, page = undefined }: ContainerInfoProps) {
             <span>Watch Now</span>
           </span>
         </Button>
-        <div style={{ marginBottom: 50 }}></div>
-        <Synopsis content={data.overview} />
+        {page === 'content' && (
+          <>
+            <div style={{ marginBottom: 50 }}></div>
+            <Synopsis content={data.overview} />
+          </>
+        )}
       </div>
     </div>
   )
