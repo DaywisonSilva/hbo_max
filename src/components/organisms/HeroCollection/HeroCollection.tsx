@@ -1,4 +1,3 @@
-import { Synopsis } from '@components/molecules'
 import Image from 'next/image'
 import React from 'react'
 import ContainerInfo from '../ContainerInfo'
@@ -24,8 +23,6 @@ function HeroCollection({ data }: HeroCollection) {
         data={{ ...data, release_date: data.first_air_date }}
         page={'content'}
       />
-
-      {/* <Synopsis content={data.overview} /> */}
     </div>
   )
 }
