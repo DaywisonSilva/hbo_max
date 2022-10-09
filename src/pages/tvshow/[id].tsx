@@ -20,6 +20,7 @@ function Season(data: TVshow & { slug: string }) {
           property='og:image'
           content={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
         />
+        <meta property='og:description' content={data.overview} />
       </Head>
       <Header />
       <main>
