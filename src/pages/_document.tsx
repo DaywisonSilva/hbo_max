@@ -15,6 +15,18 @@ export default function Document() {
           href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap'
           rel='stylesheet'
         />
+        favi
+        <meta property='og:title' content='HBO MAX Redesign' />
+        <meta property='og:type' content='movie' />
+        <meta
+          property='og:url'
+          content='https://hbo-max-redesign.netlify.app/'
+        />
+        <meta property='og:image' content='/img/hbo-max.jpg' />
+        <meta
+          property='og:description'
+          content='A Redesign of HBO MAX made with React + Next.js'
+        />
       </Head>
       <body>
         <Main />
