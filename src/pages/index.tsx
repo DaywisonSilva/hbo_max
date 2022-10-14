@@ -81,6 +81,18 @@ const Home: NextPage<HomeProps> = ({
           name='description'
           content='HBO MAX Redesign made with React and Next.js'
         />
+        <meta property='og:title' content='HBO MAX Redesign' />
+        <meta property='og:type' content='movie' />
+        <meta
+          property='og:url'
+          content='https://hbo-max-redesign.netlify.app/'
+        />
+        <meta property='og:image' content='/img/hbo-max.jpg' />
+        <meta
+          property='og:description'
+          content='A Redesign of HBO MAX made with React + Next.js'
+        />
+        <meta name='twitter:card' content='summary_large_image' />
         <link rel='icon' href='/img/Logo.svg' />
       </Head>
 
